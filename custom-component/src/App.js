@@ -1,11 +1,12 @@
 import "./App.css";
 import React, { useState } from "react";
 import Tab from "./component/Tab";
+import AutoComplete from "./component/AutoComplete";
 
 const tabElements = [
-  { id: 0, content: "tab1" },
-  { id: 1, content: "tab2" },
-  { id: 2, content: "tab3" },
+  { title: "Auto Complete", content: <AutoComplete /> },
+  { title: 1, content: "tab2" },
+  { title: 2, content: "tab3" },
 ];
 
 function App() {

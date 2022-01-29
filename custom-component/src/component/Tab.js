@@ -13,7 +13,7 @@ const Tab = ({ tabEventHandler, currentIndex }) => {
           className={currentIndex === 0 ? "isActive" : ""}
           onClick={() => onClickHandler(0)}
         >
-          Tab1
+          Auto Complete
         </TabElement>
         <TabElement
           className={currentIndex === 1 ? "isActive" : ""}
