@@ -2,10 +2,11 @@ import "./App.css";
 import React, { useState } from "react";
 import Tab from "./component/Tab";
 import AutoComplete from "./component/AutoComplete";
+import Modal from "./component/Modal";
 
 const tabElements = [
   { title: "Auto Complete", content: <AutoComplete /> },
-  { title: 1, content: "tab2" },
+  { title: "Modal", content: <Modal /> },
   { title: 2, content: "tab3" },
 ];
 
@@ -19,7 +20,11 @@ function App() {
   return (
     <div className="App">
       <header>
-        <Tab tabEventHandler={renderElement} currentIndex={tabIndex} />
+        <Tab
+          tabEventHandler={renderElement}
+          currentIndex={tabIndex}
+          tabElements={tabElements}
+        />
       </header>
       <main>
         <div>

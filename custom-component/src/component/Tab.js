@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Tab = ({ tabEventHandler, currentIndex }) => {
+const Tab = ({ tabEventHandler, currentIndex, tabElements }) => {
   const onClickHandler = (idx) => {
     tabEventHandler(idx);
   };
@@ -9,24 +9,16 @@ const Tab = ({ tabEventHandler, currentIndex }) => {
   return (
     <NavTab>
       <ul>
-        <TabElement
-          className={currentIndex === 0 ? "isActive" : ""}
-          onClick={() => onClickHandler(0)}
-        >
-          Auto Complete
-        </TabElement>
-        <TabElement
-          className={currentIndex === 1 ? "isActive" : ""}
-          onClick={() => onClickHandler(1)}
-        >
-          Tab2
-        </TabElement>
-        <TabElement
-          className={currentIndex === 2 ? "isActive" : ""}
-          onClick={() => onClickHandler(2)}
-        >
-          Tab3
-        </TabElement>
+        {tabElements.map((data, idx) => {
+          return (
+            <TabElement
+              className={currentIndex === idx ? "isActive" : ""}
+              onClick={() => onClickHandler(idx)}
+            >
+              {data.title}
+            </TabElement>
+          );
+        })}
       </ul>
     </NavTab>
   );
