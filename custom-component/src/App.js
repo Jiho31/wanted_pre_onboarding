@@ -2,11 +2,12 @@ import "./App.css";
 import React, { useState } from "react";
 import Tab from "./component/Tab";
 import AutoComplete from "./component/AutoComplete";
+import ModalButton from "./component/ModalButton";
 import Modal from "./component/Modal";
 
 const tabElements = [
   { title: "Auto Complete", content: <AutoComplete /> },
-  { title: "Modal", content: <Modal /> },
+  { title: "Modal", content: <ModalButton /> },
   { title: 2, content: "tab3" },
 ];
 
@@ -40,6 +41,7 @@ function App() {
           </article> */}
         </div>
       </main>
+      <Modal />
     </div>
   );
 }
