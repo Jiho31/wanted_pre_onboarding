@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { searchData } from "../searchData";
 import styled from "styled-components";
 
 const AutoComplete = () => {
   const [inputText, setInputText] = useState("");
   const [dropdownData, setDropdownData] = useState(searchData);
+  const searchInput = useRef();
+  const dropdownRef = useRef();
 
   const onChangeHandler = (e) => {
     setInputText(e.target.value);
   };
   const onBlurHandler = () => {
-    document.querySelector(".dropdown-container").style.display = "none";
+    setTimeout(() => {
+      document.querySelector(".dropdown-container").style.display = "none";
+    }, 100);
   };
   const onFocusHandler = () => {
     if (dropdownData.length === 0) {
@@ -54,8 +58,9 @@ const AutoComplete = () => {
         onFocus={onFocusHandler}
         autoComplete="off"
         list="fruit-names"
+        ref={searchInput}
       ></SearchInput>
-      <DropDownContainer className="dropdown-container">
+      <DropDownContainer className="dropdown-container" ref={dropdownRef}>
         <ul>
           {dropdownData.length > 0 ? (
             dropdownData.map((fruit, idx) => {
@@ -113,6 +118,7 @@ const DropDownContent = styled.li`
   padding: 4px 15px;
   display: inline-flex;
   align-items: center;
+
   &:hover {
     background-color: #d9d9d9;
     cursor: default;
