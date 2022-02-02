@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { ModalContext } from "../App";
 
 const ModalButton = () => {
+  const modalContext = useContext(ModalContext);
+
   const clickEventHandler = (e) => {
-    console.log("clicked");
+    modalContext.modalDispatch("show");
   };
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <OpenButton onClick={clickEventHandler}>Open Modal</OpenButton>

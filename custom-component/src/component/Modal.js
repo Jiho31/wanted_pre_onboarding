@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import styled from "styled-components";
 import closeIcon from "../../src/close.png";
+import { ModalContext } from "../App";
 
 const Modal = () => {
+  const modalRef = useRef();
+  const modalContext = useContext(ModalContext);
+
+  useEffect(() => {
+    if (modalContext.modalDisplay) {
+      modalRef.current.style.display = "flex";
+    } else {
+      modalRef.current.style.display = "none";
+    }
+  }, [modalContext.modalDisplay]);
+
+  const clickEventHandler = (e) => {
+    modalContext.modalDispatch("hide");
+  };
+
   return (
-    <ModalWrapper>
-      <ModalContainer>
-        <CloseButton>
+    <ModalWrapper ref={modalRef} onClick={clickEventHandler}>
+      <ModalContainer onClick={(e) => e.stopPropagation()}>
+        <CloseButton onClick={clickEventHandler}>
           <button>
             <img src={closeIcon} alt="close modal" />
           </button>

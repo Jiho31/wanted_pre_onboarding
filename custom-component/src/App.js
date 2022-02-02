@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useReducer, createContext } from "react";
 import Tab from "./component/Tab";
 import AutoComplete from "./component/AutoComplete";
 import ModalButton from "./component/ModalButton";
@@ -11,8 +11,21 @@ const tabElements = [
   { title: 2, content: "tab3" },
 ];
 
+export const ModalContext = createContext();
+const reducer = (state, action) => {
+  switch (action) {
+    case "show":
+      return true;
+    case "hide":
+      return false;
+    default:
+      return state;
+  }
+};
+
 function App() {
   const [tabIndex, setTabIndex] = useState(0);
+  const [modalDisplay, modalDispatch] = useReducer(reducer, false);
 
   const renderElement = (idx) => {
     setTabIndex(idx);
@@ -27,11 +40,14 @@ function App() {
           tabElements={tabElements}
         />
       </header>
-      <main>
-        <div>
-          {tabElements[tabIndex].content}
-          {/* 탭 내용 템플릿 */}
-          {/* <article>
+      <ModalContext.Provider
+        value={{ modalDisplay: modalDisplay, modalDispatch: modalDispatch }}
+      >
+        <main>
+          <div>
+            {tabElements[tabIndex].content}
+            {/* 탭 내용 템플릿 */}
+            {/* <article>ß
             <h1>title 1</h1>
             <section>content1</section>
           </article>
@@ -39,9 +55,10 @@ function App() {
             <h1>title 2</h1>
             <section>content2</section>
           </article> */}
-        </div>
-      </main>
-      <Modal />
+          </div>
+        </main>
+        <Modal />
+      </ModalContext.Provider>
     </div>
   );
 }
