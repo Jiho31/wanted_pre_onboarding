@@ -4,11 +4,12 @@ import Tab from "./component/Tab";
 import AutoComplete from "./component/AutoComplete";
 import ModalButton from "./component/ModalButton";
 import Modal from "./component/Modal";
+import ClickToEdit from "./component/ClickToEdit";
 
 const tabElements = [
   { title: "Auto Complete", content: <AutoComplete /> },
   { title: "Modal", content: <ModalButton /> },
-  { title: 2, content: "tab3" },
+  { title: "Click to Edit", content: <ClickToEdit /> },
 ];
 
 export const ModalContext = createContext();
