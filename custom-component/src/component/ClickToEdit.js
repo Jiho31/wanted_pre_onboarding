@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import useInputs from "../hooks/useInputs";
 
 const initialValue = {
   name: "복지호",
@@ -9,11 +8,6 @@ const initialValue = {
 };
 
 const ClickToEdit = () => {
-  // const [{ name, age, mbti }, onChange] = useInputs({
-  //   name: "복지호",
-  //   age: "2n",
-  //   mbti: "ISFJ",
-  // });
   const [inputs, setInputs] = useState(initialValue);
   const [form, setForm] = useState(initialValue);
 
