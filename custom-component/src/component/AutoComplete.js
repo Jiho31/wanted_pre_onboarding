@@ -11,20 +11,37 @@ const AutoComplete = () => {
   const onChangeHandler = (e) => {
     setInputText(e.target.value);
   };
-  const onBlurHandler = () => {
+  const onBlurHandler = (e) => {
     setTimeout(() => {
-      document.querySelector(".dropdown-container").style.display = "none";
-    }, 100);
+      dropdownRef.current.style.display = "none";
+    }, 200);
+    dropdownRef.current.style.transform = "scaleY(0)";
   };
   const onFocusHandler = () => {
-    if (dropdownData.length === 0) {
-    }
-    document.querySelector(".dropdown-container").style.display = "block";
+    dropdownRef.current.style.transform = "scaleY(1)";
   };
   const clickEventHandler = (e) => {
     setInputText(e.target.innerHTML);
-    console.log(e.target.innerHTML);
+    dropdownRef.current.style.transform = "scaleY(0)";
   };
+
+  /*
+  useEffect(() => {
+    document.body.addEventListener("click", (e) => {
+      if (
+        e.target === searchInput.current ||
+        e.target === dropdownRef.current
+      ) {
+        // 드롭다운 컨테이너 보이기
+        document.querySelector(".dropdown-container").style.display = "block";
+
+        // 검색창 input 테두리 스타일 변경
+      } else {
+        document.querySelector(".dropdown-container").style.display = "none";
+      }
+    });
+  }, []);
+  */
 
   useEffect(() => {
     const matchingResult = searchData.filter(
@@ -36,47 +53,36 @@ const AutoComplete = () => {
   return (
     <Container>
       <label htmlFor="searchInput">영어로 과일 이름을 입력하세요: </label>
-      {/* <SearchInput
-        name="searchInput"
-        type="text"
-        value={inputText}
-        onChange={onChangeHandler}
-        autoComplete="off"
-        list="fruit-names"
-      ></SearchInput>
-      <datalist id="fruit-names">
-        {searchData.map((fruit, idx) => {
-          return <option key={idx} value={fruit} />;
-        })}
-      </datalist> */}
-      <SearchInput
-        name="searchInput"
-        type="text"
-        value={inputText}
-        onChange={onChangeHandler}
-        onBlur={onBlurHandler}
-        onFocus={onFocusHandler}
-        autoComplete="off"
-        list="fruit-names"
-        ref={searchInput}
-      ></SearchInput>
-      <DropDownContainer className="dropdown-container" ref={dropdownRef}>
-        <ul>
-          {dropdownData.length > 0 ? (
-            dropdownData.map((fruit, idx) => {
-              return (
-                <DropDownContent key={idx} onClick={clickEventHandler}>
-                  {fruit}
-                </DropDownContent>
-              );
-            })
-          ) : (
-            <DropDownContent noMatch>
-              일치하는 자동완성 결과가 없습니다
-            </DropDownContent>
-          )}
-        </ul>
-      </DropDownContainer>
+      <SearchWrapper>
+        <SearchInput
+          name="searchInput"
+          type="text"
+          value={inputText}
+          onChange={onChangeHandler}
+          onFocus={onFocusHandler}
+          onBlur={onBlurHandler}
+          autoComplete="off"
+          list="fruit-names"
+          ref={searchInput}
+        ></SearchInput>
+        <DropDownContainer className="dropdown-container" ref={dropdownRef}>
+          <ul>
+            {dropdownData.length > 0 ? (
+              dropdownData.map((fruit, idx) => {
+                return (
+                  <DropDownContent key={idx} onClick={clickEventHandler}>
+                    {fruit}
+                  </DropDownContent>
+                );
+              })
+            ) : (
+              <DropDownContent noMatch>
+                일치하는 자동완성 결과가 없습니다
+              </DropDownContent>
+            )}
+          </ul>
+        </DropDownContainer>
+      </SearchWrapper>
     </Container>
   );
 };
@@ -87,7 +93,12 @@ const Container = styled.div`
   align-items: center;
   margin-top: 20px;
 `;
-
+const SearchWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const SearchInput = styled.input`
   width: 40%;
   height: 2.5rem;
@@ -96,13 +107,18 @@ const SearchInput = styled.input`
   border: 1px solid #d9d9d9;
   border-radius: 22px;
   font-size: 16px;
+
   &:focus {
     border-radius: 10px 10px 0 0;
     border-bottom: 0px;
   }
+  &:focus ~ .dropdown-container {
+    transform: scaleY(1);
+  }
 `;
 const DropDownContainer = styled.div`
-  display: none;
+  // display: none;
+  transform: scaleY(0);
   position: relative;
   width: 40%;
   max-height: 13.3rem;
@@ -111,6 +127,11 @@ const DropDownContainer = styled.div`
   border-radius: 0 0 10px 10px;
 
   overflow: hidden;
+  &:hover {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  transition: transform 0.15s ease;
 `;
 const DropDownContent = styled.li`
   width: 100%;

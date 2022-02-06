@@ -1,3 +1,4 @@
-.App {
-  text-align: center;
+.App,
+main {
+  height: 100%;
 }
