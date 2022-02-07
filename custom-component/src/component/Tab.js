@@ -12,6 +12,7 @@ const Tab = ({ tabEventHandler, currentIndex, tabElements }) => {
         {tabElements.map((data, idx) => {
           return (
             <TabElement
+              key={data.title + idx}
               className={currentIndex === idx ? "isActive" : ""}
               onClick={() => onClickHandler(idx)}
             >
