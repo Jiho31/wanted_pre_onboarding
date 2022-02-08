@@ -26,7 +26,7 @@ const Tab = ({ tabEventHandler, currentIndex, tabElements }) => {
 };
 
 const NavTab = styled.nav`
-  width: 900px;
+  width: 100%;
   display: flex;
   justify-content: center;
   margin: 0 auto;

@@ -71,27 +71,35 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   max-width: 600px;
   height: 100%;
   margin: 0 auto;
   padding: 20px;
 
   h2 {
-    margin: 15px 0;
+    margin: 10px 0;
+  }
+  form {
+    margin-bottom: 20px;
   }
 `;
 const FormElement = styled.div`
-  margin: 10px;
+  display: flex;
+  align-items: center;
+  margin: 15px;
   font-size: 14px;
   label {
-    width: 50px;
+    width: 40px;
     margin-right: 10px;
+    position: relative;
+    right: 0;
   }
   input {
     width: 180px;
     height: 30px;
     padding: 5px 8px;
-    border: 1px solid rgb(118, 118, 118);
+    border: 1px solid #d9d9d9;
     border-radius: 5px;
   }
   input:focus {

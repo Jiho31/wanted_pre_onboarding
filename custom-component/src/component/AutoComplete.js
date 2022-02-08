@@ -13,9 +13,9 @@ const AutoComplete = () => {
   };
   const onBlurHandler = (e) => {
     setTimeout(() => {
-      dropdownRef.current.style.display = "none";
+      // dropdownRef.current.style.display = "none";
+      dropdownRef.current.style.transform = "scaleY(0)";
     }, 200);
-    dropdownRef.current.style.transform = "scaleY(0)";
   };
   const onFocusHandler = () => {
     dropdownRef.current.style.transform = "scaleY(1)";
@@ -100,7 +100,8 @@ const SearchWrapper = styled.div`
   align-items: center;
 `;
 const SearchInput = styled.input`
-  width: 40%;
+  width: 80%;
+  max-width: 500px;
   height: 2.5rem;
   padding: 4px 15px;
   margin: 10px 10px 0 10px;
@@ -120,7 +121,8 @@ const DropDownContainer = styled.div`
   // display: none;
   transform: scaleY(0);
   position: relative;
-  width: 40%;
+  width: 80%;
+  max-width: 500px;
   max-height: 13.3rem;
   border: 1px solid #d9d9d9;
   border-top: 0px;
