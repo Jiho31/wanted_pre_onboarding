@@ -49,18 +49,7 @@ function App() {
         value={{ modalDisplay: modalDisplay, modalDispatch: modalDispatch }}
       >
         <main>
-          <div>
-            {tabElements[tabIndex].content}
-            {/* 탭 내용 템플릿 */}
-            {/* <article>ß
-            <h1>title 1</h1>
-            <section>content1</section>
-          </article>
-          <article>
-            <h1>title 2</h1>
-            <section>content2</section>
-          </article> */}
-          </div>
+          <div>{tabElements[tabIndex].content}</div>
         </main>
         <Modal />
       </ModalContext.Provider>

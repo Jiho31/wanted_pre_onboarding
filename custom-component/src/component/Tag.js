@@ -31,18 +31,6 @@ const Tag = () => {
     <TagContainer>
       <InputWrapper>
         <TagList className="tag-list">
-          {/* <li>
-            <span>JavaScript</span>
-            <button>
-              <img src={closeIcon} alt="remove tag" />
-            </button>
-          </li>
-          <li>
-            <span>ReactJS</span>
-            <button>
-              <img src={closeIcon} alt="remove tag" />
-            </button>
-          </li> */}
           {tagElementList.map((el) => {
             return (
               <li key={el.id}>
