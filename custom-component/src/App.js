@@ -45,9 +45,7 @@ function App() {
           tabElements={tabElements}
         />
       </header>
-      <ModalContext.Provider
-        value={{ modalDisplay: modalDisplay, modalDispatch: modalDispatch }}
-      >
+      <ModalContext.Provider value={{ modalDisplay, modalDispatch }}>
         <main>
           <div>{tabElements[tabIndex].content}</div>
         </main>

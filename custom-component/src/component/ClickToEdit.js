@@ -15,9 +15,8 @@ const ClickToEdit = () => {
     const { id, value } = e.target;
     setInputs((prevInputs) => ({ ...prevInputs, [id]: value }));
   };
-  const onBlurHandler = (e) => {
-    const { id, value } = e.target;
-    setForm((prevForm) => ({ ...prevForm, [id]: value }));
+  const onBlurHandler = () => {
+    setForm(inputs);
   };
 
   return (
