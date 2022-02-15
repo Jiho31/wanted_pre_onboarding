@@ -10,13 +10,21 @@ const ModalButton = () => {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <OpenButton onClick={clickEventHandler}>Open Modal</OpenButton>
-    </div>
+    <Container>
+      <OpenModalButton onClick={clickEventHandler}>Open Modal</OpenModalButton>
+    </Container>
   );
 };
 
-const OpenButton = styled.button`
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 50vh;
+`;
+
+const OpenModalButton = styled.button`
   width: 100px;
   height: 40px;
   color: #fff;
@@ -24,7 +32,7 @@ const OpenButton = styled.button`
   font-weight: 600;
   background-color: #ffd952;
   border-radius: 15px;
-  margin-top: 50px;
+  margin: 0 auto;
 `;
 
 export default ModalButton;

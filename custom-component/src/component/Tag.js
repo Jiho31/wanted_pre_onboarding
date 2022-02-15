@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import closeIcon from "../../src/close2.png";
+import closeIcon from "../assets/close2.png";
 
 const Tag = () => {
   const [tagInput, setTagInput] = useState("");
@@ -29,6 +29,7 @@ const Tag = () => {
 
   return (
     <TagContainer>
+      <h2>🏷 태그를 추가하세요: </h2>
       <InputWrapper>
         <TagList className="tag-list">
           {tagElementList.map((el) => {
@@ -61,11 +62,13 @@ const Tag = () => {
 const TagContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 25vh 0;
 `;
 
 const InputWrapper = styled.div`
-  margin: 50px 0;
+  margin: 20px 0;
   width: 500px;
   max-width: 80%;
   border: 1px solid #d9d9d9;

@@ -23,7 +23,7 @@ const ToggleContainer = styled.div`
   width: 100%;
 
   div {
-    margin: 50px 0;
+    margin: 25vh 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -37,10 +37,10 @@ const ToggleContainer = styled.div`
     display: inline-block;
     width: 60px;
     height: 34px;
-    cursor: pointer;
     position: relative;
     background-color: #c9c9c9;
     border-radius: 34px;
+    cursor: pointer;
   }
   label:before {
     content: "";
@@ -51,8 +51,8 @@ const ToggleContainer = styled.div`
     left: 4px;
     bottom: 4px;
     background-color: #fff;
-    transition: all 0.4s ease;
     border-radius: 50%;
+    transition: all 0.4s ease;
   }
 
   input {

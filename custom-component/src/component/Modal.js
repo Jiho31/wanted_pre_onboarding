@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useContext } from "react";
 import styled from "styled-components";
-import closeIcon from "../../src/close.png";
+import closeIcon from "../assets/close.png";
 import { ModalContext } from "../App";
 
 const Modal = () => {
@@ -52,12 +52,12 @@ const CloseButton = styled.div`
   position: relative;
   width: fit-content;
   float: right;
-  top: 10px;
+  top: 8px;
   right: 10px;
 
   button {
-    width: 13x;
-    height: 13px;
+    width: 11x;
+    height: 11px;
   }
   img {
     width: inherit;
@@ -75,6 +75,7 @@ const ModalContent = styled.div`
   height: 70%;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 export default Modal;

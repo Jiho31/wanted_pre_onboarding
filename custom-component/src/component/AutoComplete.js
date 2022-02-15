@@ -53,6 +53,7 @@ const AutoComplete = () => {
   return (
     <Container>
       <label htmlFor="searchInput">영어로 과일 이름을 입력하세요: </label>
+      <p>🍎🍌🍇🍈🍉🍑</p>
       <SearchWrapper>
         <SearchInput
           name="searchInput"
@@ -91,7 +92,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  justify-content: center;
+  margin-top: 20vh;
+
+  p {
+    font-size: 25px;
+  }
 `;
 const SearchWrapper = styled.div`
   width: 100%;
